@@ -9,17 +9,8 @@ import (
 "runtime"
 )
 
-type Url struct {
-	Uri   string
-	Level int
-}
-type Results struct {
-	BrokenLinks []string
-	AllLinks    []string
-	MainURL     string
-}
 
-func Ping(wg *sync.WaitGroup, url m.Url, c chan m.Url, result *m.Results, mu *sync.Mutex) {
+func Ping(wg *sync.WaitGroup, url m.Url, c chan m.Url, mu *sync.Mutex, result *m.Results) {
 	url.Level--
 	mu.Lock()
 	result.AllLinks = append(result.AllLinks, url.Uri)

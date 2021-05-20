@@ -28,7 +28,7 @@ func Check(c echo.Context) error {
 	ch := make(chan m.Url, 100)
 	go functions.Links(res, request.Level, wg, ch, Result)
 	for c := range ch {
-		go functions.Ping(wg, c, ch, Result, mu)
+		go functions.Ping(wg, c, ch, mu, Result)
 	}
 	fmt.Println(Result.BrokenLinks, len(Result.BrokenLinks), "BrokenLinks")
 	fmt.Println(Result.AllLinks, len(Result.AllLinks), "AllLinks")

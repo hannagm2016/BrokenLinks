@@ -9,7 +9,7 @@ import (
 	"sync"
 )
 
-func Links(res *http.Response, level int, wg *sync.WaitGroup, c chan m.Url, result *m.Results) {
+func  Links(res *http.Response, level int, wg *sync.WaitGroup, c chan m.Url, result *m.Results) {
 	defer func() {
 		if err := recover(); err != nil {
 			return
